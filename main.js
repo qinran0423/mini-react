@@ -1,32 +1,5 @@
+import App from './App.js';
 
-function createTextNode(text) {
-	return {
-		type: 'TEXT_ELEMENT',
-		props: {
-			nodeValue: text,
-			children: []
-		}
-	}
-}
+import ReactDOM from './core/ReactDom.js';
 
-function createElement(type, props, ...children) {
-	return {
-		type,
-		props: {
-			...props,
-			children
-		}
-	}
-}
-
-const textEl = createTextNode('app')
-const App = createElement('div', { id: 'app' }, createTextNode('app'))
-
-
-const dom = document.createElement(App.type)
-dom.id = App.props.id
-document.querySelector('#root').append(dom)
-
-const textNode = document.createTextNode('')
-textNode.nodeValue = textEl.props.nodeValue
-dom.append(textNode)
+ReactDOM.createRoot(document.querySelector('#root')).render(App)
